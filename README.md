@@ -18,6 +18,8 @@ DYG allows users to drag 3D Gaussians, achieving flexible and precise 3D scene e
 
 ## 🎥 Introduction Video
 
-[text](https://github.com/user-attachments/assets/dd392b1e-3acc-4745-a4f4-940d5d3f44b0)
+<p align="center">
+  <img width="100%" src="assets/teaser.gif"/>
+</p>
 
 Visiting our [**Project Page**](https://quyans.github.io/Drag-Your-Gaussian/) for more result.
