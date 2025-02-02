@@ -12,6 +12,7 @@
   <p>Officially implement of paper "Drag Your Gaussian: Effective Drag-Based Editing with Score Distillation for 3D Gaussian Splatting".</p>
 
 **😊 TL;DR**
+
 DYG allows users to drag 3D Gaussians, achieving flexible and precise 3D scene editing results.
 
 
