@@ -1,0 +1,42 @@
+scene:
+  #SH 0
+  render_res_factor: 2
+
+gsoptimizer:
+  args:
+    base_sd_path: 'checkpoints/stable-diffusion-inpainting'
+    vae_path: 'checkpoints/sd-vae-ft-mse/'
+    ip_adapter_path: 'checkpoints/IP-Adapter/models/'
+    lightning_drag_model_path: 'checkpoints/lightning-drag-sd15'
+    #lcm_lora_path: 'checkpoints/lcm-lora-sdv1-5'
+    lcm_lora_path: null
+
+    guidance_scale: 4
+    min_step_percent: 0.02
+    max_step_percent: 0.98
+    num_densifications: 9
+    total_iterations: 1500
+    triplane_optim_iter: -1
+    triplane_optim_step_percent: 0.7 #only use when triplane_optim_iter = -1
+    triplane_lr_down_scale: 0.1
+
+    batch_size: 4
+    lr_scale: 0.25
+    lr_scale_end: 0.25
+    # lrs: {'xyz': 0.001, 'features': 0.01, 'opacity': 0.05, 'scales': 0.01, 'rotations': 0.01, 'embeddings': 0.01} 
+    lrs: {'xyz': 0.00, 'features': 0.01, 'opacity': 0.01, 'scales': 0.001, 'rotations': 0.01} 
+
+    lambda_latent_sds: 1
+    lambda_image_sds: 0.1
+    lambda_reg: 2500
+    use_pos_deform2: True
+    only_optimize_3d_mask:  True
+
+    mask_depth_treshold: 1
+    mask_dilate_size: 30
+    mask_dilate_iter: 2
+
+    use_knn: True
+    knn_coeff: 0.3 #0.8
+    other_coeff: 0
+    knn_number: 20 #20

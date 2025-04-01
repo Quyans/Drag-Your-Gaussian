@@ -1,0 +1,9 @@
+[submodule "submodules/diff-gaussian-rasterization-with-bbox-mask"]
+	path = submodules/diff-gaussian-rasterization-with-bbox-mask
+	url = git@github.com:Quyans/diff-gaussian-rasterization-with-bbox-mask.git
+[submodule "submodules/pytorch3d"]
+	path = submodules/pytorch3d
+	url = git@github.com:facebookresearch/pytorch3d.git
+[submodule "viser"]
+	path = viser
+	url = git@github.com:CD-link/viser.git
