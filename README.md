@@ -41,22 +41,23 @@ git submodule update --init --recursive
 ```
 conda env create --file environment.yaml
 conda activate DYG
-#install viser for webui
-pip install -e ./viser
 ```
 
 ## 📚 Data Preparation
-参考[3DGS](https://github.com/graphdeco-inria/gaussian-splatting?tab=readme-ov-file#processing-your-own-scenes)进行重建，我们建议将重建过程的球谐阶数设为0 \
-或者使用我们准备好的数据，以face场景为例，文件结构为
+
+Refer to [3DGS](https://github.com/graphdeco-inria/gaussian-splatting?tab=readme-ov-file#processing-your-own-scenes) for reconstruction. We recommend setting the spherical harmonic degree to 0 for the reconstruction process.
+Alternatively, you can use the [data](https://drive.google.com/drive/folders/19Jv3crbF7xMu1ouNoCH-mEH87ClykpuY?usp=sharing) we have prepared. Taking the face scene as an example, the file structure is as follows:
 ```
 └── data
     └── face
+        ├── export_1
+        │   ├── drag_points.json
+        │   └── gaussian_mask.pt
         ├── image
         ├── sparse
         └── point_cloud.ply
 ```
-
-由于我们使用lightningdrag作为扩散先验，您需要按照[lightningdrag](https://github.com/magic-research/LightningDrag/blob/main/INSTALLATION.md#2-download-pretrained-models)下载模型并按以下结构组织
+Since we use LightningDrag as the diffusion prior, you need to download the model following the instructions in [lightningdrag](https://github.com/magic-research/LightningDrag/blob/main/INSTALLATION.md#2-download-pretrained-models) and organize it according to the following structure.
 ```
 └── checkpoints
     ├── dreamshaper-8-inpainting
@@ -79,18 +80,39 @@ pip install -e ./viser
 ```
 
 ## 🚋 Training
-使用以下命令启动webui，具体可参考[webui](./assets/webui-guide/webui.md)
-```
+Start the WebUI using the following command. For detailed usage instructions, refer to [WebUI](./assets/webui-guide/webui.md)
+```shell
 python webui.py --colmap_dir <path to colmap dir> --gs_source <path to 3DGS ply> --output_dir <save path>
-#这是一个具体的例子
+#This is a specific example.
 python webui.py --colmap_dir ./data/face/ --gs_source ./data/face/point_cloud.ply --output_dir result
 ```
-您可以在webui中直接进行训练。或者在webui选择drag point和mask后，导出对应数据drag_point.json、gaussian_mask.pt，通过以下命令开始训练，其中--point_dir和--mask_dir参数代表对应的文件路径
-```
+You can train directly in the WebUI. Alternatively, after selecting the drag point and mask in the WebUI, export the corresponding data files drag_point.json and gaussian_mask.pt, and start the training using the following command, where the `--point_dir` and `--mask_dir` parameters represent the file paths.
+
+```shell
 python drag_3d.py --config configs/main.yaml \
                   --colmap_dir ./data/face/ \
                   --gs_source ./data/face/point_cloud.ply \
-                  --point_dir ./data/face/export/drag_points.json \
-                  --mask_dir ./data/face/export/gaussian_mask.pt \
+                  --point_dir ./data/face/export_1/drag_points.json \
+                  --mask_dir ./data/face/export_1/gaussian_mask.pt \
                   --output_dir result
 ```
+
+## Citation
+
+```
+@article{qu2025drag,
+  title={Drag Your Gaussian: Effective Drag-Based Editing with Score Distillation for 3D Gaussian Splatting},
+  author={Qu, Yansong and Chen, Dian and Li, Xinyang and Li, Xiaofan and Zhang, Shengchuan and Cao, Liujuan and Ji, Rongrong},
+  journal={arXiv preprint arXiv:2501.18672},
+  year={2025}
+}
+```
+
+## License
+
+Licensed under the CC BY-NC-SA 4.0 (Attribution-NonCommercial-ShareAlike 4.0 International)
+
+
+The code is released for academic research use only. 
+
+If you have any questions, please contact me via [quyans@stu.xmu.edu.cn](mailto:quyans@stu.xmu.edu.cn). 

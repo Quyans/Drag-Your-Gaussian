@@ -1,6 +1,6 @@
 ### WebUI Instructions
 #### 1. Start WebUI
-这里以face场景为例，文件结构为
+Here, we take the face scene as an example. The file structure is as follows:
 ```
 └── data
     └── face
@@ -8,42 +8,44 @@
         ├── sparse
         └── point_cloud.ply
 ```
-使用命令启动webui
-```
+Use the command to start the WebUI
+```shell
 python webui.py --colmap_dir ./data/face/ --gs_source ./data/face/point_cloud.ply --output_dir result
 ```
-之后您可以看到如下画面 \
+Afterward, you will see the following screen. \
 <img width="600" src="./webui_init.png">
 
-#### 2. 选择编辑区域
-勾选右侧Enable Filter和Draw Filter Box，之后点击画面进行区域选择 \
+#### 2. Select the Edit Area
+Check the boxes for `Enable Filter` and `Draw Filter Box` on the right side, then click on the screen to select the area. \
 <img width="600" src="./webui_select_mask1.png">
 
-之后按下Filter Now!确定选择区域，所选区域会被红色高亮表示 \
+Then, press `Filter Now!` to confirm the selected area, which will be highlighted in red. \
 <img width="600" src="./webui_select_mask2.png">
 
-您也可以切换至其他视角，继续选择编辑区域，我们会对其取交集。另外，通过Reset Filter!可以重置编辑区域。\
+You can also switch to other viewpoints and continue selecting the edit area; we will take the intersection of all selected areas. Additionally, you can reset the edit area by clicking `Reset Filter!`. \
 <img width="600" src="./webui_select_mask3.png">
 
-#### 3. 选择拖拽控制点和目标点
-勾选右侧Drag Point Enalbled和Add Point，之后点击画面选择点，这里我们使用渲染深度图进行反投影以得到3D点 \
+#### 3. Select Drag Control Points and Target Points
+Check the boxes for `Drag Point Enabled` and `Add Point` on the right side, then click on the screen to select points. Here, we use the rendered depth map for re-projection to obtain 3D points. \
 <img width="600" src="./webui_select_point1.png">
 
-之后按下Add Drag Point To Text将选取点加入到文本框中，您可以在文本框中微调选取点的位置，或者继续在画面上选点逐一添加到文本框中 \
+Next, press `Add Drag Point` To Text to add the selected points to the text box. You can fine-tune the positions of the selected points in the text box, or continue selecting points on the screen and add them one by one to the text box. \
 <img width="200" src="./webui_select_point2.png">
 
-最后，按下Input Drag Point将本文框中的内容作为输入，所有的输入点对在画面上用蓝色(控制点)和红色(目标点)来表示 \
+Finally, press `Input Drag Point` to use the content in the text box as input. All input point pairs will be displayed on the screen with blue (control points) and red (target points). \
 <img width="600" src="./webui_select_point3.png">
 
-#### 4. 训练
-选择编辑区域和拖拽点对后，按下Drag Now!开始训练。 \
-或者，你可以按下Save Mask&Point进行数据导出，导出路径为output_dir/export/。导出的Mask和Point分别为gaussian_mask.pt和drag_points.json\
-然后您可以通过如下命令不使用webui下进行训练。
-```
+#### 4. Training
+
+After selecting the edit area and drag points, press `Drag Now!` to start training. \
+Alternatively, you can press Save Mask&Point to export the data, with the export path being `output_dir/export/`. The exported Mask and Points will be `gaussian_mask.pt` and `drag_points.json`, respectively. \
+You can then train without using the WebUI by using the following command.
+
+```shell
 python drag_3d.py --config configs/main.yaml \
                   --colmap_dir ./data/face/ \
                   --gs_source ./data/face/point_cloud.ply \
-                  --point_dir ./data/face/export/drag_points.json \
-                  --mask_dir ./data/face/export/gaussian_mask.pt \
+                  --point_dir ./data/face/export_1/drag_points.json \
+                  --mask_dir ./data/face/export_1/gaussian_mask.pt \
                   --output_dir result
 ```
