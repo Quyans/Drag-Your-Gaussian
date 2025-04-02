@@ -125,7 +125,7 @@ if __name__ == "__main__":
     assert len(colmap_cameras) > 10
 
     #output init image and point
-    for i,cam in enumerate(colmap_cameras):
+    for i,cam in enumerate(train_colmap_cameras):
         #rendered_image, rendered_depth, rendered_mask = refiner.renderer.render(*gaussians, cam, scaling_modifier=1.0, bg_color=None)
         rendered_image, rendered_depth, rendered_mask = gsoptimizer.renderer([cam],gaussians, scaling_modifier=1.0, bg_color=None)
         
