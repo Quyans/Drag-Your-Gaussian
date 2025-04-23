@@ -15,7 +15,7 @@
   <strong>“Drag Your Gaussian: Effective Drag-Based Editing with Score Distillation for 3D Gaussian Splatting.”</strong>
 </p>
 
----
+
 
 ## 😊 TL;DR
 
