@@ -21,7 +21,7 @@
 
 **DYG** allows intuitive and flexible 3D scene editing by enabling users to drag 3D Gaussians while preserving fidelity and structure.
 
----
+
 
 ## 🎥 Introduction Video
 
@@ -30,7 +30,7 @@ https://github.com/user-attachments/assets/1e484ff9-f44c-4995-a99d-453cf0f11f95
 
 Or visit our [**Project Page**](https://quyans.github.io/Drag-Your-Gaussian/) for more examples and visualizations.
 
----
+
 
 ## 🔧 Installation
 
@@ -49,7 +49,7 @@ conda env create --file environment.yaml
 conda activate DYG
 ```
 
----
+
 
 ## 📚 Data Preparation
 
@@ -96,7 +96,7 @@ Organize them as follows:
         └── lightning-drag-sd15-attn.bin
 ```
 
----
+
 
 ## 🚋 Training
 
@@ -120,7 +120,7 @@ You can train directly in the WebUI. Alternatively, after selecting drag points 
 python drag_3d.py --config configs/main.yaml                   --colmap_dir ./data/face/                   --gs_source ./data/face/point_cloud.ply                   --point_dir ./data/face/export_1/drag_points.json                   --mask_dir ./data/face/export_1/gaussian_mask.pt                   --output_dir result
 ```
 
----
+
 
 ## 📖 Citation
 
@@ -135,14 +135,14 @@ If you find our work useful, please cite:
 }
 ```
 
----
+
 
 ## 📄 License
 
 This project is licensed under the **CC BY-NC-SA 4.0**.  
 The code is intended for **academic research purposes only**.
 
----
+
 
 ## 📬 Contact
 
