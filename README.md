@@ -25,10 +25,9 @@
 
 ## 🎥 Introduction Video
 
-Watch our intro video:  
 https://github.com/user-attachments/assets/1e484ff9-f44c-4995-a99d-453cf0f11f95
 
-Or visit our [**Project Page**](https://quyans.github.io/Drag-Your-Gaussian/) for more examples and visualizations.
+Visit our [**Project Page**](https://quyans.github.io/Drag-Your-Gaussian/) for more examples and visualizations.
 
 
 
